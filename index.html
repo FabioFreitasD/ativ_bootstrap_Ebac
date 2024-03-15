@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade bootstrap</title>
+    <link rel="stylesheet" href="./bit/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            height: 100%;
+            background: linear-gradient(90deg, rgb(123, 88, 206) 0%, rgb(247, 105, 214) 50%, rgb(65, 204, 255) 100%);
+        }
+        .container {
+            height: 100%;
+            padding: 10px;
+            margin: auto;
+        }
+        .carousel img {
+            width: 100%;
+            height: 80vh;
+        }
+        main{
+            background-color: #eeeeee;
+        }
+        .card h2 {
+            color: blue;
+        }
+        .card img {
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="cabecalho">
+        <div class="navbar">
+            <div class="container"> <!--Observe que sem o container nossa pagina estava de ponta a ponta agora por causa do nosso container temos uma largura maxima limitando a pagina centralizando o conteudo e ao diminuir fazendo ficar responsivo.-->
+                <h1> Holden Saúde Familiar</h1>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu"> <!--Com esse button na classe navbar-toggler precisamos do span com a mesma classe adicionando o item para termos nosso botão menu bar. Com os atributos data-bs-toggle que recebe o collapse e data-bs-targuet que recebe o id menu então dizemos ao bootstrap que estamos collapsando esse id fazendo a funcionalidade de abrir e fechar do menu bar. -->
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav class="collapse navbar-collapse" id="menu"> <!--com a classe collapse escondemos nosso conteudo no button e com a classe navbar-collapse colocamos ele no menu bar observe que é necessario programar a funcionalidade de abrir e fechar do botão no bootstrap com atributos-->
+                    <ul class="nav navbar-nav nav-pills"> <!--com a classe nav o bootstrap ja estiliza nossos elementos ul, a classe nav-item vai ajudar a estilizar mas é necessario classes no li(nav-item) e no a (nav-link). com a classe navbar-nav estamos colocando nosso conteudo um abaixo do outro-->
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#inicio">inicio</a> <!--a classe active vai mostrar ao usuario interpretado pelo bootstrap que o link esta ativo-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#produtos">Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#promocoes">Promoções</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container carousel">
+            <div id="carousel-exemplo" class="carousel carousel-fade slide" data-bs-ride="carousel"> <!--necessario o atributo data-bs-ride que vai receber o carousel para o bootstrap saber que se trata de um carousel, a classe carousel-fade serve para dar a impressão que a imagem aparece e desaparece.-->
+                <div class="carousel-inner"> <!--Classe do carousel-->
+                    <div data-bs-interval="2000" class="carousel-item active"> <!--Depois do atributo deve-se ativar o carousel com a classe active geralmente é apenas na primeira imagem-->
+                        <img class="d-block w-100" src="./bit/art-2436545_960_720.jpg" alt="#"> <!--adicionando a classe d-block w-100 o bootstrap entende que a imagem deve ocupar 100% do container.-->
+                        <div class="carousel-caption"> <!--Essa classe permite colocar um texto dentro do carousel-->
+                            <h2>Ruiva entre folhas</h2>
+                        </div>
+                    </div>
+                    <div data-bs-interval="2000" class="carousel-item"> <!--caurosel-item é uma classe necessaria para que nossa imagem faça parte do carousel sem ela o bootstrap não vai adicionar.-->
+                        <img class="d-block w-100" src="./bit/girl-8351533_1280.webp" alt="#">
+                        <div class="carousel-caption">
+                            <h2>Levando flores</h2>
+                        </div>
+                    </div>
+                    <div data-bs-interval="2000" class="carousel-item"> <!--O atributo data-bs-interval serve para aumentar ou diminuir o tempo de exibição das imagens em milisegundos-->
+                        <img class="d-block w-100" src="./bit/woman-3551832_1280.jpg" alt="#">
+                        <div class="carousel-caption">
+                            <h2>fatian</h2>
+                        </div>
+                    </div>
+                </div>
+                <button data-bs-target="#carousel-exemplo" data-bs-slide="prev" class="carousel-control-prev" type="button"> <!--A classe carousel-control-prev serve para fixar um botão para tras, foi necessario um atributo data-bs-slide que recebeu prev para o bootstrap saber que ele deve voltar na imagem quando acionado.-->
+                    <span class="carousel-control-prev-icon"></span>  <!--A classe carousel-control-icon serve para fixar um botão para voltar. Observe que mesmo fixando os botões eles não funcionam sem o atributo data-bs-targuet que recebe um id que deve ser colocado na div 1 do carousel.-->
+                </button>
+                <button data-bs-target="#carousel-exemplo" data-bs-slide="next" class="carousel-control-next" type="button">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+                <div class="carousel-indicators"> <!--Essa classe indica ao bootstrap que deve ser exibida indicarores que vai mostrar ao usuario quantas imagens tem nosso carousel-->
+                    <button type="button" data-bs-target="#carousel-exemplo" class="active" data-bs-slide-to="0"></button> <!--Esse atributo diz ao bootstrap a sequencia das imagens-->
+                    <button type="button" data-bs-target="#carousel-exemplo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carousel-exemplo" data-bs-slide-to="2"></button>
+                </div>
+            </div>
+        </div>
+        <div class="container card">
+            <h2>Veja nossos Cards e se inspire.</h2>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <article class="card">
+                        <header class="card-header">
+                            Crie habitos.
+                        </header>
+                        <img src="./bit/girl-8351533_1280.webp" alt="#">
+                        <div class="card-body">
+                            <h4 class="card-title">Descubra suas raizes</h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur blanditiis eaque laboriosam ipsum repellendus officia, adipisci sapiente nesciunt, deserunt delectus similique quam quae hic repudiandae, dolorem maiores? Quos, alias impedit.</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                        <footer class="card-footer">
+                            Postado em <time>04/03/2024 ás 14:31</time>
+                        </footer>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card text-bg-dark"> <!--a class text-bg-dark transforma o fundo do nosso card em mais escuro-->
+                        <img src="./bit/art-2436545_960_720.jpg" alt="#">
+                        <div class="card-img-overlay"> <!--com a classe card-img-overlay nosso p fazr parte da imagem-->
+                            <h4 class="card-title">Sinta a Natureza</h4>
+                            <h5 class="card-subtitle">Seje natural com tudo o que rodeia</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur. eaque laboriosam ipsum repellendus officia, adipisci sapiente nesciunt, deserunt delectus similique quam quae hic repudiandae, dolorem maiores? Quos, alias impedit.</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <img src="./bit/woman-3551832_1280.jpg" alt="#">
+                        <div class="card-body">
+                            <h4 class="card-title">Veja a beleza.</h4>
+                            <h5 class="card-subtitle">Seja humana ou animal a beleza esta em tudo o que nos cerca.</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur blanditiis eaque laboriosam ipsum repellendus officia, adipisci sapiente nesciunt, deserunt delectus similique quam quae hic repudiandae, dolorem maiores? Quos, alias impedit.</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        Postado em <time>04/03/2024 ás 14:31</time>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./bit/bootstrap.bundle.min.js"></script>
+</body>
+</html>
